@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import "./styles.scss"
+import "../styles.scss"
 import { graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { CardMenu } from "../components/CardMenu"
