@@ -1,10 +1,10 @@
 import React from "react"
 import { Card } from "./Card"
-import "../styles.scss"
+import "../../styles.scss"
 
 export const CardMenu = ({ videos, setdisplayedVideo }) => {
   return (
-    <div className="card-menu">
+    <section className="homepage--menu">
       {videos.map(video => (
         <Card
           video={video}
@@ -12,6 +12,6 @@ export const CardMenu = ({ videos, setdisplayedVideo }) => {
           key={video.id}
         />
       ))}
-    </div>
+    </section>
   )
 }
