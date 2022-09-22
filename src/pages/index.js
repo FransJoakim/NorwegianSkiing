@@ -47,13 +47,6 @@ export default function Home({ data }) {
           <Menu videos={videos} setdisplayedVideo={setdisplayedVideo} />
         </div>
       </div>
-      <footer className="footer">
-        <StaticImage
-          src="../images/norwegian-dutch-flags.png"
-          alt="norwegian flag"
-          className="footer--image"
-        />
-      </footer>
     </>
   )
 }
