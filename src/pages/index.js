@@ -1,8 +1,10 @@
 import React, { useState } from "react"
 import "../styles.scss"
 import { graphql } from "gatsby"
-import { CardMenu } from "../features/menu/CardMenu"
+import { Menu } from "../features/Menu"
 import { Video } from "../features/Video"
+import { Navbar } from "../features/navbar"
+import { StaticImage } from "gatsby-plugin-image"
 
 export const query = graphql`
   {
@@ -30,14 +32,28 @@ export default function Home({ data }) {
   const [displayedVideo, setdisplayedVideo] = useState(videos[0])
 
   return (
-    <div
-      className="background"
-      style={{ backgroundImage: `url(${displayedVideo.backgroundPhoto.url})` }}
-    >
+    <>
+      <Navbar />
+      <div
+        className="background-image"
+        style={{
+          backgroundImage: `url(${displayedVideo.backgroundPhoto.url})`,
+        }}
+      ></div>
+      <div className="background-image--overlay" />
       <div className="homepage">
-        <Video video={displayedVideo} />
-        <CardMenu videos={videos} setdisplayedVideo={setdisplayedVideo} />
+        <div className="homepage--content-wrapper">
+          <Video video={displayedVideo} />
+          <Menu videos={videos} setdisplayedVideo={setdisplayedVideo} />
+        </div>
       </div>
-    </div>
+      <footer className="footer">
+        <StaticImage
+          src="../images/norwegian-dutch-flags.png"
+          alt="norwegian flag"
+          className="footer--image"
+        />
+      </footer>
+    </>
   )
 }

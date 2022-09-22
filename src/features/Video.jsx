@@ -10,11 +10,11 @@ export const Video = ({ video }) => {
     richText = documentToReactComponents(JSON.parse(video.beskrivelse.raw))
   }
   return (
-    <div className="homepage--displayedContent">
-      <div className="video">
+    <div className="displayed-video">
+      <div className="displayed-video--iframe">
         <iframe width="100%" height="100%" src={embeddedURL}></iframe>
       </div>
-      {richText && <p>{richText}</p>}
+      {richText && <p className="displayed-video--description">{richText}</p>}
     </div>
   )
 }
