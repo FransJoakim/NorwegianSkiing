@@ -31,6 +31,8 @@ export default function Home({ data }) {
   const [videos] = useState(data.videos.nodes)
   const [displayedVideo, setdisplayedVideo] = useState(videos[0])
 
+  console.log(videos)
+
   return (
     <>
       <Navbar />
