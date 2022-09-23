@@ -3,7 +3,7 @@ import "../styles.scss"
 import { graphql } from "gatsby"
 import { Menu } from "../features/Menu"
 import { Video } from "../features/Video"
-import { Navbar } from "../features/navbar"
+import { Navbar } from "../features/Navbar"
 import { StaticImage } from "gatsby-plugin-image"
 
 export const query = graphql`
