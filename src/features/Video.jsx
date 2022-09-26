@@ -12,7 +12,12 @@ export const Video = ({ video }) => {
   return (
     <div className="displayed-video">
       <div className="displayed-video--iframe">
-        <iframe width="100%" height="100%" src={embeddedURL}></iframe>
+        <iframe
+          width="100%"
+          height="100%"
+          src={embeddedURL}
+          allow="fullscreen"
+        ></iframe>
       </div>
       {richText && <p className="displayed-video--description">{richText}</p>}
     </div>
