@@ -6,11 +6,17 @@ export const Video = ({ video }) => {
   const embeddedURL = video.url.replace("watch?v=", "embed/") + "?autoplay=1"
 
   let richText = null
-  if (video.beskrivelse) {
-    richText = documentToReactComponents(JSON.parse(video.beskrivelse.raw))
+  if (video.description) {
+    richText = documentToReactComponents(JSON.parse(video.description.raw))
   }
   return (
     <div className="displayed-video">
+      <div className="displayed-video--header">
+        <h1 className="displayed-video--header-title">{video.title}</h1>
+        <p className="displayed-video--header-date">
+          Published: {video.createdAt}
+        </p>
+      </div>
       <div className="displayed-video--iframe">
         <iframe
           width="100%"
@@ -19,7 +25,9 @@ export const Video = ({ video }) => {
           allow="fullscreen"
         ></iframe>
       </div>
-      {richText && <p className="displayed-video--description">{richText}</p>}
+      {richText && (
+        <div className="displayed-video--description">{richText}</div>
+      )}
     </div>
   )
 }

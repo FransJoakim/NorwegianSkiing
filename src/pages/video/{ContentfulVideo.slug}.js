@@ -1,28 +1,25 @@
-import React, { useState } from "react"
-import "../styles.scss"
+import React, { useEffect, useState } from "react"
+import "../../styles.scss"
 import { graphql } from "gatsby"
-import { Menu } from "../features/Menu"
-import { Video } from "../features/Video"
-import { Navbar } from "../features/Navbar"
+import { Menu } from "../../features/Menu"
+import { Video } from "../../features/Video"
+import { Navbar } from "../../features/Navbar"
 
 export const query = graphql`
   {
-    videos: allContentfulEntry {
+    videos: allContentfulVideo {
       nodes {
-        ... on ContentfulVideo {
-          id
-          title
-          slug
-          description {
-            raw
-          }
-          url
-          image {
-            url
-            width
-          }
-          createdAt(locale: "no-no", fromNow: true)
+        title
+        slug
+        description {
+          raw
         }
+        url
+        image {
+          url
+          width
+        }
+        createdAt(locale: "no-no", fromNow: true)
       }
     }
   }
@@ -31,6 +28,12 @@ export const query = graphql`
 export default function Home({ data }) {
   const [videos] = useState(data.videos.nodes)
   const [displayedVideo, setdisplayedVideo] = useState(videos[0])
+  const slug = window.location.pathname.replace("/video/", "")
+
+  useEffect(() => {
+    const queriedVideo = videos.find(video => video.slug === slug)
+    setdisplayedVideo(queriedVideo)
+  })
 
   return (
     <>

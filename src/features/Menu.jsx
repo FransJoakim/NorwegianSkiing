@@ -1,34 +1,31 @@
 import React from "react"
+import { Link } from "gatsby"
 import "../styles.scss"
 
-export const Menu = ({ videos, setdisplayedVideo }) => {
+export const Menu = ({ videos }) => {
   return (
     <section className="menu">
       {videos.map(video => (
-        <Card
-          video={video}
-          setdisplayedVideoFunction={setdisplayedVideo}
-          key={video.id}
-        />
+        <Card video={video} key={video.slug} />
       ))}
     </section>
   )
 }
 
-export const Card = ({ video, setdisplayedVideoFunction }) => {
-  const { tittel, kortBeskrivelse, createdAt, backgroundPhoto } = video
+export const Card = ({ video }) => {
+  const { title, slug, image, createdAt } = video
   return (
-    <div className="card" onClick={() => setdisplayedVideoFunction(video)}>
+    <Link className="card" to={`/video/${slug}`}>
       <div className="card--wrapper">
         <div
           className="card--background-image"
-          style={{ backgroundImage: `url(${backgroundPhoto.url})` }}
+          style={{ backgroundImage: `url(${image.url})` }}
         ></div>
         <div className="card--text">
-          <p className="card--text--title">{tittel}</p>
+          <p className="card--text--title">{title}</p>
           <p className="card--text--date">{createdAt.toUpperCase()}</p>
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
