@@ -1,53 +1,25 @@
-import React, { useState } from "react"
+import React, { useEffect } from "react"
 import "../styles.scss"
 import { graphql } from "gatsby"
-import { Menu } from "../features/Menu"
-import { Video } from "../features/Video"
-import { Navbar } from "../features/Navbar"
+import { navigate } from "@reach/router"
 
 export const query = graphql`
   {
-    videos: allContentfulEntry {
+    videos: allContentfulVideo {
       nodes {
-        ... on ContentfulVideo {
-          id
-          title
-          slug
-          description {
-            raw
-          }
-          url
-          image {
-            url
-            width
-          }
-          createdAt(locale: "no-no", fromNow: true)
-        }
+        slug
       }
     }
   }
 `
 
 export default function Home({ data }) {
-  const [videos] = useState(data.videos.nodes)
-  const [displayedVideo, setdisplayedVideo] = useState(videos[0])
+  console.log("slug", data.videos.nodes[0].slug)
 
-  return (
-    <>
-      <Navbar />
-      <div
-        className="background-image"
-        style={{
-          backgroundImage: `url(${displayedVideo.image.url})`,
-        }}
-      ></div>
-      <div className="background-image--overlay" />
-      <div className="homepage">
-        <div className="homepage--content-wrapper">
-          <Video video={displayedVideo} />
-          <Menu videos={videos} setdisplayedVideo={setdisplayedVideo} />
-        </div>
-      </div>
-    </>
-  )
+  // navigate(`/video/${data.videos.nodes[0].slug}/`)
+  window.location.replace(`/video/${data.videos.nodes[0].slug}/`)
+
+  // useEffect(() => {
+  //   navigate(`/video/${data.videos.nodes[0].slug}/`)
+  // }, [])
 }

@@ -25,10 +25,10 @@ export const query = graphql`
   }
 `
 
-export default function Home({ data }) {
+export default function Home({ data, location }) {
   const [videos] = useState(data.videos.nodes)
   const [displayedVideo, setdisplayedVideo] = useState(videos[0])
-  const slug = window.location.pathname.replace("/video/", "")
+  const slug = location.pathname.replace(/\/video\/(.*?)\//, "$1")
 
   useEffect(() => {
     const queriedVideo = videos.find(video => video.slug === slug)
@@ -38,19 +38,23 @@ export default function Home({ data }) {
   return (
     <>
       <Navbar />
-      <div
-        className="background-image"
-        style={{
-          backgroundImage: `url(${displayedVideo.image.url})`,
-        }}
-      ></div>
-      <div className="background-image--overlay" />
-      <div className="homepage">
-        <div className="homepage--content-wrapper">
-          <Video video={displayedVideo} />
-          <Menu videos={videos} setdisplayedVideo={setdisplayedVideo} />
-        </div>
-      </div>
+      {displayedVideo && (
+        <>
+          <div
+            className="background-image"
+            style={{
+              backgroundImage: `url(${displayedVideo.image.url})`,
+            }}
+          ></div>
+          <div className="background-image--overlay" />
+          <div className="homepage">
+            <div className="homepage--content-wrapper">
+              <Video video={displayedVideo} />
+              <Menu videos={videos} setdisplayedVideo={setdisplayedVideo} />
+            </div>
+          </div>
+        </>
+      )}
     </>
   )
 }
