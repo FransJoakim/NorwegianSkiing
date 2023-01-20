@@ -25,9 +25,12 @@ export const Video = ({ video }) => {
           allow="fullscreen"
         ></iframe>
       </div>
-      {richText && (
-        <div className="displayed-video--description">{richText}</div>
-      )}
+      <div className="displayed-video--description">
+        <p className="displayed-video--description-date">
+          <span>Published:</span> {video.createdAt}
+        </p>
+        {richText && <p>{richText}</p>}
+      </div>
     </div>
   )
 }

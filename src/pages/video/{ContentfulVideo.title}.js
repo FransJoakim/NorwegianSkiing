@@ -47,8 +47,8 @@ export default function Home({ data, location }) {
             }}
           ></div>
           <div className="background-image--overlay" />
-          <div className="homepage">
-            <div className="homepage--content-wrapper">
+          <div className="page">
+            <div className="page--content-wrapper">
               <Video video={displayedVideo} />
               <Menu videos={videos} setdisplayedVideo={setdisplayedVideo} />
             </div>
