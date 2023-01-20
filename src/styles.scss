@@ -107,7 +107,7 @@ body {
 
   .homepage {
     position: absolute;
-    top: 16%;
+    top: 14%;
     width: 100%;
     height: calc(80vh);
     display: flex;
@@ -116,54 +116,50 @@ body {
     &--content-wrapper {
       width: 95%;
       display: flex;
+      flex-direction: column;
       justify-content: space-around;
+      align-items: center;
 
       .displayed-video {
-        margin-top: -1rem;
-        padding: 1rem 4rem;
-        width: 20%;
-        flex-grow: 7;
-        flex-basis: 7;
-        flex-shrink: 10;
+        padding: 1rem 2rem;
         display: flex;
         flex-direction: column;
+        margin: 1rem 0;
 
         &--header {
           display: flex;
           align-items: flex-end;
 
           &-title {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 500;
           }
           &-date {
-            margin-left: 0.8rem;
+            margin-left: 1.5rem;
+            margin-bottom: 0.5rem;
           }
         }
 
         &--iframe {
-          height: 55vh;
-          min-height: 30rem;
-          width: 95%;
+          height: 45vh;
+          min-height: 25rem;
         }
 
         &--description {
           margin: 1rem 0;
-          font-size: large;
+          font-size: 1em;
           font-weight: 300;
         }
       }
 
       .menu {
-        flex-grow: 1;
-        flex-basis: 1;
-        flex-shrink: 1;
-        width: 18%;
-        height: 86vh;
-        overflow: scroll;
+        width: 94%;
+        min-height: 21.43vh;
+        overflow-x: scroll;
+        overflow-y: hidden;
 
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
 
         a {
           text-decoration: none;
@@ -173,8 +169,8 @@ body {
         .card {
           display: flex;
           flex-direction: column;
-          height: 30em;
-          margin-bottom: 2rem;
+          height: 10em;
+          min-width: 30vw;
 
           &--wrapper {
             margin-right: 0.8rem;
@@ -183,25 +179,108 @@ body {
           }
 
           &--background-image {
-            height: 13em;
+            height: 8em;
             background-position: center;
             background-size: cover;
             border-radius: 3px 3px 0 0;
           }
 
           &--text {
-            height: 30%;
+            height: 10%;
             width: 100%;
             display: flex;
             flex-direction: column;
-            padding: 1rem;
+            padding: 0.7rem;
 
             &--title {
-              font-size: 1.2rem;
+              font-size: 1rem;
             }
 
             &--date {
               font-size: 0.6rem;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media (min-width: 760px) {
+    .homepage {
+      &--content-wrapper {
+        .displayed-video--iframe {
+        }
+
+        .menu {
+          .card {
+            &--background-image {
+            }
+          }
+        }
+      }
+    }
+  }
+  @media (min-width: 1200px) {
+    .homepage {
+      top: 16%;
+
+      &--content-wrapper {
+        flex-direction: row;
+
+        .displayed-video {
+          margin-top: -1rem;
+          margin-bottom: 0;
+          padding: 1rem 4rem;
+          min-width: 920px;
+
+          &--header {
+            &-title {
+              font-size: 3rem;
+              font-weight: 500;
+            }
+            &-date {
+              margin-bottom: 0.7rem;
+            }
+          }
+
+          &--iframe {
+            height: 55vh;
+            min-height: 30rem;
+            width: 95%;
+          }
+
+          &--description {
+            margin: 1rem 0;
+            font-size: large;
+            font-weight: 300;
+          }
+        }
+
+        .menu {
+          min-width: 25vw;
+          max-width: 430px;
+          height: 86vh;
+          flex-direction: column;
+          overflow-x: hidden;
+          overflow-y: scroll;
+
+          .card {
+            height: 30em;
+            width: auto;
+            min-width: auto;
+            margin-bottom: 2rem;
+
+            &--background-image {
+              height: 13em;
+            }
+
+            &--text {
+              height: 30%;
+              width: 100%;
+              padding: 1rem;
+
+              &--title {
+                font-size: 1.2rem;
+              }
             }
           }
         }
