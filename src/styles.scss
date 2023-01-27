@@ -9,6 +9,15 @@ html {
   box-sizing: inherit;
 }
 
+a {
+  text-decoration: none;
+
+  &:visited {
+    color: white;
+    text-decoration: none;
+  }
+}
+
 body,
 h1,
 h2,
@@ -21,7 +30,7 @@ ol,
 ul {
   margin: 0;
   padding: 0;
-  font-weight: normal;
+  // font-weight: normal;
 }
 
 ol,
@@ -52,34 +61,25 @@ img {
 body {
   background-color: black;
   font-family: "Poppins";
+  color: white;
 
   .navbar {
     z-index: 2;
     position: fixed;
-    // height: 4rem;
     width: 100%;
 
-    // &--overlay {
-    //   position: absolute;
-    //   height: 100%;
-    //   width: 100%;
-    //   background-color: lightgrey;
-    //   opacity: 0.2;
-    // }
-
     &--content {
-      width: 100%;
-      height: 100%;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      margin-top: 1rem;
       color: white;
-      padding: 1rem;
+      padding: 2rem;
 
       .logo {
         display: flex;
         align-items: center;
-        font-size: 2em;
+        font-size: 1.9em;
 
         span {
           margin-left: 0.5rem;
@@ -87,14 +87,14 @@ body {
       }
 
       .website-info {
-        span {
-          margin: 1.5rem;
-        }
+        display: none;
       }
     }
   }
 
   .background-image {
+    -webkit-transition: background-image 0.2s ease-in-out;
+    transition: background-image 0.4s ease-in-out;
     position: absolute;
     width: 100%;
     height: 100vh;
@@ -110,58 +110,96 @@ body {
     opacity: 0.6;
   }
 
-  .homepage {
+  .page {
     position: absolute;
-    top: 16%;
+    top: 14%;
     width: 100%;
     height: calc(80vh);
     display: flex;
     justify-content: center;
 
     &--content-wrapper {
-      width: 95%;
+      width: 100%;
       display: flex;
+      flex-direction: column;
       justify-content: space-around;
+      align-items: center;
 
       .displayed-video {
-        padding: 4rem 4rem;
-        width: 20%;
-        flex-grow: 7;
-        flex-basis: 7;
-        flex-shrink: 10;
+        padding: 1rem 1.3rem;
         display: flex;
         flex-direction: column;
+        margin: 1rem 0;
+        min-height: 50vh;
+
+        &--header {
+          display: flex;
+          align-items: flex-end;
+
+          &-title {
+            font-size: 1.85rem;
+            font-weight: 400;
+          }
+          &-date {
+            display: none;
+          }
+        }
 
         &--iframe {
-          height: 55vh;
-          min-height: 30rem;
-          width: 95%;
+          margin-top: 0.5rem;
+          height: 29vh;
+          width: 85vw;
         }
 
         &--description {
+          max-height: 10vh;
+          min-height: 6vh;
+          overflow-y: scroll;
           margin: 1rem 0;
-          overflow: scroll;
-          color: white;
-          font-size: large;
+          font-size: 1em;
+          font-weight: 300;
+
+          &-date {
+            font-weight: 500;
+
+            span {
+              font-weight: bold;
+            }
+          }
         }
       }
 
       .menu {
-        flex-grow: 1;
-        flex-basis: 1;
-        flex-shrink: 1;
-        width: 18%;
-        height: 78vh;
-        overflow: scroll;
-
+        width: 100vw;
+        min-height: 23vh;
+        margin-top: 1rem;
+        overflow-x: scroll;
+        overflow-y: hidden;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+
+        &--background {
+          position: fixed;
+          width: 100vw;
+          height: 32vh;
+          bottom: 0;
+          left: 0;
+          background-color: rgba(63, 74, 82, 0.7);
+          z-index: 0;
+        }
 
         .card {
+          z-index: 5;
+          text-decoration: none;
+          color: white;
           display: flex;
           flex-direction: column;
-          height: 30em;
-          margin-bottom: 2rem;
+          height: 10em;
+          min-width: 43vw;
+
+          &:first-child {
+            margin-left: 2rem;
+          }
 
           &--wrapper {
             margin-right: 0.8rem;
@@ -170,23 +208,18 @@ body {
           }
 
           &--background-image {
-            height: 13em;
+            height: 8em;
             background-position: center;
             background-size: cover;
             border-radius: 3px 3px 0 0;
           }
 
           &--text {
-            color: white;
-            height: 30%;
+            height: 5.3rem;
             width: 100%;
             display: flex;
             flex-direction: column;
-            padding: 1rem;
-
-            &--title {
-              font-size: 1.2rem;
-            }
+            padding: 0.7rem;
 
             &--date {
               font-size: 0.6rem;
@@ -196,18 +229,174 @@ body {
       }
     }
   }
+  @media (min-width: 760px) {
+    .navbar {
+      &--content {
+        padding: 1rem;
+        margin-top: 0.5rem;
 
-  .footer {
-    z-index: 4;
-    position: fixed;
-    bottom: 0;
-    height: 3.5rem;
-    width: 100%;
-    background-color: red;
+        .logo {
+          font-size: 2em;
+        }
 
-    &--image {
-      width: 3rem;
-      height: 3rem;
+        .website-info {
+          display: inline;
+          span {
+            margin: 1.5rem;
+          }
+        }
+      }
+    }
+
+    .homepage {
+      &--content-wrapper {
+        width: 95%;
+
+        .displayed-video {
+          padding: 1rem 3rem;
+          min-height: 65vh;
+
+          &--header {
+            &-title {
+              font-size: 2.5rem;
+            }
+            &-date {
+              margin-left: 1.5rem;
+              margin-bottom: 0.5rem;
+            }
+          }
+
+          &--iframe {
+            margin-top: auto;
+            height: 55vh;
+            min-height: 40rem;
+          }
+
+          &--description {
+            margin: 1rem 0;
+            font-size: 1em;
+            font-weight: 300;
+          }
+        }
+
+        .menu {
+          width: 94%;
+          min-height: 21.43vh;
+
+          &--background {
+            height: 23.5vh;
+          }
+
+          .card {
+            min-width: 30vw;
+
+            &:first-child {
+              margin-left: auto;
+            }
+
+            &--background-image {
+              height: 8em;
+              background-position: center;
+              background-size: cover;
+              border-radius: 3px 3px 0 0;
+            }
+
+            &--text {
+              height: 10%;
+              width: 100%;
+              display: flex;
+              flex-direction: column;
+              padding: 0.7rem;
+
+              &--title {
+                font-size: 1rem;
+              }
+
+              &--date {
+                font-size: 0.6rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  @media (min-width: 1200px) {
+    .homepage {
+      top: 16%;
+
+      &--content-wrapper {
+        flex-direction: row;
+
+        .displayed-video {
+          margin-top: -1rem;
+          margin-bottom: 0;
+          padding: 1rem 4rem;
+          min-width: 920px;
+
+          &--header {
+            &-title {
+              font-size: 3rem;
+              font-weight: 500;
+            }
+            &-date {
+              margin-bottom: 0.7rem;
+              display: block;
+            }
+          }
+
+          &--iframe {
+            height: 55vh;
+            min-height: 30rem;
+            width: 95%;
+          }
+
+          &--description {
+            margin: 1rem 0;
+            font-size: large;
+            font-weight: 300;
+
+            &-date {
+              display: none;
+            }
+          }
+        }
+
+        .menu {
+          min-width: 25vw;
+          max-width: 430px;
+          margin-top: auto;
+          height: 86vh;
+          flex-direction: column;
+          overflow-x: hidden;
+          overflow-y: scroll;
+
+          &--background {
+            display: none;
+          }
+
+          .card {
+            height: 30em;
+            width: 100%;
+            min-width: auto;
+            margin-bottom: 2rem;
+
+            &--background-image {
+              height: 13em;
+            }
+
+            &--text {
+              height: 30%;
+              width: 100%;
+              padding: 1rem;
+
+              &--title {
+                font-size: 1.2rem;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
