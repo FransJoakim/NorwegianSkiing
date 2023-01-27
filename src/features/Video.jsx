@@ -23,13 +23,15 @@ export const Video = ({ video }) => {
           height="100%"
           src={embeddedURL}
           allow="fullscreen"
+          title="Video"
+          tabIndex="0"
         ></iframe>
       </div>
       <div className="displayed-video--description">
         <p className="displayed-video--description-date">
           <span>Published:</span> {video.createdAt}
         </p>
-        {richText && <p>{richText}</p>}
+        {richText && <div>{richText}</div>}
       </div>
     </div>
   )

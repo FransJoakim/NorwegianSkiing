@@ -1,5 +1,6 @@
 import React from "react"
 import "../styles.scss"
+import { navigate } from "gatsby"
 
 export const Menu = ({ videos }) => {
   return (
@@ -17,11 +18,11 @@ export const Menu = ({ videos }) => {
 export const Card = ({ video }) => {
   const { title, slug, image, createdAt } = video
   const redirect = () => {
-    window.location.replace(`/video/${slug}/`)
+    navigate(`/video/${slug}/`)
   }
 
   return (
-    <div className="card" onClick={redirect}>
+    <div className="card" tabIndex="1" onClick={redirect}>
       <div className="card--wrapper">
         <div
           className="card--background-image"

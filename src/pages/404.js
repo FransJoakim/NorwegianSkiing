@@ -1,18 +1,18 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
 import { Navbar } from "../features/Navbar"
 
 export const query = graphql`
   {
-    about: allContentfulAbout {
+    videos: allContentfulVideo {
       nodes {
-        id
+        slug
       }
     }
   }
 `
 
-export default function About({ data, location }) {
+export default function NotFound({ data, location }) {
   return (
     <>
       <Navbar />
@@ -24,7 +24,12 @@ export default function About({ data, location }) {
       ></div>
       <div className="background-image--overlay" />
       <div className="page">
-        <div className="page--content-wrapper">Info about this page</div>
+        <div className="pageNotFound">
+          <Link to={`/video/${data.videos.nodes[0].slug}/`}>
+            <h1>PAGE NOT FOUND</h1>
+            <p>Go to homepage</p>
+          </Link>
+        </div>
       </div>
     </>
   )

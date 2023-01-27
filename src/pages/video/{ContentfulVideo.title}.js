@@ -33,7 +33,7 @@ export default function Home({ data, location }) {
   useEffect(() => {
     const queriedVideo = videos.find(video => video.slug === slug)
     setdisplayedVideo(queriedVideo)
-  })
+  }, [videos, slug])
 
   return (
     <>

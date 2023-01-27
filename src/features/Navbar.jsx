@@ -8,7 +8,7 @@ export const Navbar = () => {
       <div className="navbar--content">
         <Link to="/" className="logo">
           <FaSnowflake size={60} />
-          <span>Norwegian skiing</span>
+          <span>Norwegian ski</span>
         </Link>
         <div className="website-info">
           <span>

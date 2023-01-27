@@ -2,6 +2,9 @@ require("dotenv").config()
 
 module.exports = {
   /* Your site config here */
+  flags: {
+    DEV_SSR: true,
+  },
   plugins: [
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
