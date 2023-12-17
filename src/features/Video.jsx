@@ -1,6 +1,7 @@
 import React from "react"
 import "../styles.scss"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import { ReactFitty } from "react-fitty"
 
 export const Video = ({ video }) => {
   const embeddedURL = video.url.replace("watch?v=", "embed/") + "?autoplay=1"
@@ -12,7 +13,9 @@ export const Video = ({ video }) => {
   return (
     <div className="displayed-video">
       <div className="displayed-video--header">
-        <h1 className="displayed-video--header-title">{video.title}</h1>
+        <ReactFitty className="displayed-video--header-title">
+          {video.title}
+        </ReactFitty>
         <p className="displayed-video--header-date">
           Published: {video.createdAt}
         </p>

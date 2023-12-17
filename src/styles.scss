@@ -11,9 +11,9 @@ html {
 
 a {
   text-decoration: none;
+  color: white;
 
   &:visited {
-    color: white;
     text-decoration: none;
   }
 }
@@ -72,17 +72,21 @@ body {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-top: 1rem;
       color: white;
-      padding: 2rem;
+      padding: 1rem;
 
       .logo {
         display: flex;
         align-items: center;
-        font-size: 1.9em;
+        font-size: 1.7em;
+
+        &--img {
+          height: 5rem;
+          width: 5.7rem;
+        }
 
         span {
-          margin-left: 0.5rem;
+          margin-left: 1rem;
         }
       }
 
@@ -100,7 +104,7 @@ body {
     height: 100vh;
     background-position: center;
     background-size: cover;
-    background-color: red;
+    background-color: black;
   }
   .background-image--overlay {
     position: absolute;
@@ -229,6 +233,14 @@ body {
         }
       }
     }
+    .about {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+    }
     .pageNotFound {
       width: 100%;
       display: flex;
@@ -247,17 +259,21 @@ body {
   @media (min-width: 760px) {
     .navbar {
       &--content {
-        padding: 1rem;
-        margin-top: 0.5rem;
+        padding: 0.5rem;
 
         .logo {
-          font-size: 2em;
+          font-size: 2.4em;
+          .logo--img {
+            height: 7rem;
+            width: 8rem;
+          }
         }
 
         .website-info {
           display: inline;
+          font-size: 1.3rem;
           span {
-            margin: 1.5rem;
+            margin-right: 2.5rem;
           }
         }
       }
@@ -270,6 +286,7 @@ body {
         .displayed-video {
           padding: 1rem 3rem;
           min-height: 65vh;
+          margin-top: 4rem;
 
           &--header {
             &-title {
@@ -337,8 +354,17 @@ body {
     }
   }
   @media (min-width: 1200px) {
+    .navbar {
+      .logo {
+        font-size: 2.1rem;
+      }
+    }
     .page {
       top: 16%;
+
+      .column {
+        flex-direction: column;
+      }
 
       &--content-wrapper {
         flex-direction: row;
