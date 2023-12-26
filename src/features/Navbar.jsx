@@ -6,11 +6,7 @@ export const Navbar = () => {
     <header className="navbar">
       <div className="navbar--content">
         <Link to="/" className="logo">
-          <img
-            src={"/static/talkingcloudsLogo.png"}
-            alt="Talking clouds logo"
-            className="logo--img"
-          />
+          <img src={"/talkingcloudsLogo.png"} alt="" className="logo--img" />
           <span>TALKING CLOUDS</span>
         </Link>
         <div className="website-info">
